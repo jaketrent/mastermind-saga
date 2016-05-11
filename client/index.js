@@ -1,10 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-function Comp() {
-  return (
-    <h1>Awesome</h1>
-  )
-}
+import Game from './game'
 
-render(<Comp />, document.getElementById('app'))
+render(<Game />, document.getElementById('app'))
