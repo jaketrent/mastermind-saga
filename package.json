@@ -1,10 +1,14 @@
 {
-  "name": "saga-demo",
+  "name": "mastermind-saga",
   "version": "1.0.0",
   "description": "",
   "main": "server/index.js",
   "scripts": {
     "start": "nodemon server"
+  },
+  "engines": {
+    "node": "6.x",
+    "npm": "3.x"
   },
   "keywords": [],
   "author": "jaketrent",
