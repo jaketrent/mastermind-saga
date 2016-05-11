@@ -13,11 +13,6 @@ const port = process.env.PORT || 3000
 
 app.use(logger())
 app.use(mount('/static', webpackDevMiddleware(webpack(config))))
-app.use(route.get('/', index))
-
-function* index() {
-  this.body = fs.readFileSync('./client/index.html', 'utf8')
-}
 
 app.listen(port)
 console.log(`Webpacking on ${port}...`)
