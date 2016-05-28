@@ -9,8 +9,8 @@ import css from './row.css'
 function Row(props) {
   return (
     <div className={props.css.root}>
-      <Hole><Peg color="red" /></Hole>
-      <Hole><Peg color="yellow" /></Hole>
+      <Hole />
+      <Hole />
       <Hole />
       <Hole />
     </div>
