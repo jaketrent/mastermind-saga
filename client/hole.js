@@ -1,25 +1,28 @@
 import React from 'react'
 import styleable from 'react-styleable'
 
-import * as actions from './hole/actions'
 import css from './hole.css'
+import Peg from './peg'
 
-function handleClick() {
-  actions.placePeg()
-}
+const { func, string } = React.PropTypes
 
 class Hole extends React.Component {
   render() {
     return (
-      <div className={props.css.root} onClick={handleClick}>
-        {props.children}
+      <div className={this.props.css.root} onClick={this.props.onClick}>
+        <Peg color={this.props.color} />
       </div>
     )
   }
 }
 
 Hole.propTypes = {
+  color: string,
+  onClick: func.isRequired
+}
 
+Hole.defaultProps = {
+  color: 'gray'
 }
 
 export default styleable(css)(Hole)

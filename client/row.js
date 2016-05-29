@@ -1,24 +1,48 @@
+import { connect } from 'react-redux'
 import React from 'react'
 import styleable from 'react-styleable'
 
+import css from './row.css'
+import * as holeActions from './hole/actions'
 import Hole from './hole'
 import Peg from './peg'
 
-import css from './row.css'
+function mapDispatchToProps(dispatch) {
+  return {
+    holeOnClick(i) {
+      dispatch(holeActions.placePeg(i))
+    }
+  }
+}
 
-function Row(props) {
-  return (
-    <div className={props.css.root}>
-      <Hole />
-      <Hole />
-      <Hole />
-      <Hole />
-    </div>
-  )
+function mapStateToProps(state) {
+  return {
+    guess: state.game.guess
+  }
+}
+
+function renderHole(props, color, i) {
+  return <Hole color={color}
+               key={i}
+               onClick={_ => props.holeOnClick(i)} />
+}
+
+function renderHoles(props) {
+  return props.guess.map((color, i) => renderHole(props, color, i))
+}
+
+class Row extends React.Component {
+  render() {
+    return (
+      <div className={this.props.css.root}>
+        {renderHoles(this.props)}
+      </div>
+    )
+  }
 }
 
 Row.propTypes = {
 
 }
 
-export default styleable(css)(Row)
+export default styleable(css)(connect(mapStateToProps, mapDispatchToProps)(Row))

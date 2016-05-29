@@ -1,11 +1,12 @@
 import types from 'redux-types'
 
-const TYPES = types('hole',
+export const TYPES = types('hole',
   'PLACE_PEG'
 )
 
-export function placePeg() {
+export function placePeg(index) {
   return {
-    type: TYPES.PLACE_PEG_
+    type: TYPES.PLACE_PEG,
+    index
   }
 }

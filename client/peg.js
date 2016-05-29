@@ -12,11 +12,11 @@ function Peg(props) {
 }
 
 Peg.propTypes = {
-  color: string.isRequired
+  color: string
 }
 
 Peg.defaultProps = {
-  color: 'root'
+  color: 'gray'
 }
 
 export default styleable(css)(Peg)
