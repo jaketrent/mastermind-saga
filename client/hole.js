@@ -21,8 +21,4 @@ Hole.propTypes = {
   onClick: func.isRequired
 }
 
-Hole.defaultProps = {
-  color: 'gray'
-}
-
 export default styleable(css)(Hole)

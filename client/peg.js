@@ -15,8 +15,4 @@ Peg.propTypes = {
   color: string
 }
 
-Peg.defaultProps = {
-  color: 'gray'
-}
-
 export default styleable(css)(Peg)
