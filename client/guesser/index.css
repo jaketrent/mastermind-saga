@@ -1,0 +1,14 @@
+.root {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.btn {
+  width: 150px;
+  font-size: 16px;
+  padding: 8px 12px;
+  border: 0;
+  background: orange;
+  color: #fff;
+  font-family: sans-serif;
+}

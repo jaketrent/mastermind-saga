@@ -2,10 +2,10 @@ import { connect } from 'react-redux'
 import React from 'react'
 import styleable from 'react-styleable'
 
-import css from './row.css'
-import * as holeActions from './hole/actions'
-import Hole from './hole'
-import Peg from './peg'
+import css from './index.css'
+import * as holeActions from '../hole/actions'
+import Hole from '../hole'
+import Peg from '../peg'
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -31,7 +31,7 @@ function renderHoles(props) {
   return props.guess.map((color, i) => renderHole(props, color, i))
 }
 
-class Row extends React.Component {
+class ActiveRow extends React.Component {
   render() {
     return (
       <div className={this.props.css.root}>
@@ -41,8 +41,4 @@ class Row extends React.Component {
   }
 }
 
-Row.propTypes = {
-
-}
-
-export default styleable(css)(connect(mapStateToProps, mapDispatchToProps)(Row))
+export default styleable(css)(connect(mapStateToProps, mapDispatchToProps)(ActiveRow))

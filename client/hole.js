@@ -18,7 +18,7 @@ class Hole extends React.Component {
 
 Hole.propTypes = {
   color: string,
-  onClick: func.isRequired
+  onClick: func
 }
 
 export default styleable(css)(Hole)
