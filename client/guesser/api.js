@@ -3,13 +3,18 @@ import axios from 'axios'
 import { deserializeError } from '../common/api'
 
 export const create = {
-  formatUrl() {
-    return `/api/mastermind`
+  formatUrl(id) {
+    console.log('client id', id)
+    return `/api/mastermind/${id}/guess`
   },
-  request(url) {
+  serialize(guess) {
+    return { data: { guess } } 
+  },
+  request(url, data) {
     return axios({
       method: 'post',
-      url
+      url,
+      data 
     })
   },
   deserializeSuccess(res) {

@@ -5,9 +5,7 @@ const uuid = require('node-uuid')
 const app = koa()
 
 app.use(route.post('/', create))
-app.use(route.get('/', list))
-app.use(route.get('/:id', show))
-app.use(route.del('/:id', del))
+app.use(route.post('/:id/guess', guess))
 
 const games = {}
 const colorOrder = ['red', 'yellow', 'blue', 'green']
@@ -28,23 +26,43 @@ function generateGame(id) {
   }
 }
 
+function lookup(id) {
+  return Object.assign({}, games[id])
+}
+
+function calcKeyPegs(guess, solution) {
+  const blackIndexes = guess.reduce((indexes, g, i) => {
+    const isBlack = g === solution[i]
+    return indexes = isBlack
+      ? indexes.concat([i])
+      : indexes
+  }, [])
+
+  const whiteIndexes = guess.reduce((indexes, g, i) => {
+    const indexInSolution = solution.indexOf(g)
+    const isWhite = indexInSolution > -1
+      && !blackIndexes.includes(indexInSolution)
+      && !indexes.includes(indexInSolution)
+    return indexes = isWhite
+      ? indexes.concat([i])
+      : indexes
+  }, [])
+
+  return {
+    blacks: blackIndexes.length,
+    whites: whiteIndexes.length
+  }
+}
+
 function* create() {
   const id = uuid.v4()
   games[id] = generateGame(id)
-  console.log('games', games)
   this.body = { data: [{ id }] }
 }
 
-function* list() {
-  this.body = [{ all: 'games' }]
-}
-
-function* show(id) {
-  this.body = { game: id }
-}
-
-function* del(id) {
-  console.log('deleted.')
+function* guess(id) {
+  const keys = calcKeyPegs(this.request.body.data.guess, lookup(id).solution)
+  this.body = { data: [{ keys }] }
 }
 
 module.exports = app

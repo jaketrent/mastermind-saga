@@ -6,6 +6,7 @@ module.exports = {
     'babel-polyfill',
     './client/index.js'
   ],
+  devtool: 'source-map',
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '/static/',

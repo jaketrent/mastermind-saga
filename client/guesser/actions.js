@@ -1,21 +1,23 @@
 import types from 'redux-types'
 
-export const TYPES = types('game',
+export const TYPES = types('guess',
   'CREATE',
   'CREATE_SUCCESS',
   'CREATE_ERROR'
 )
 
-export function create() {
+export function create(id, guess) {
   return {
-    type: TYPES.CREATE
+    type: TYPES.CREATE,
+    id,
+    guess
   }
 }
 
-export function createSuccess(game) {
+export function createSuccess(feedback) {
   return {
     type: TYPES.CREATE_SUCCESS,
-    game
+    feedback
   }
 }
 

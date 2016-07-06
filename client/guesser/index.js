@@ -4,18 +4,20 @@ import styleable from 'react-styleable'
 
 import { CODE_PEG_COUNT } from '../game/vars'
 import css from './index.css'
-import * as gameActions from '../game/actions'
+import * as guessActions from './actions'
 
 function mapStateToProps(state) {
   return {
+    gameId: state.game.id,
+    guess: state.game.guess,
     hasAllGuesses: state.game.guess.filter(g => g).length === CODE_PEG_COUNT
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleClick() {
-      dispatch(gameActions.guess())
+    handleClick(id, guess) {
+      dispatch(guessActions.create(id, guess))
     }
   }
 }
@@ -26,7 +28,7 @@ class Guesser extends React.Component {
       <div className={this.props.css.root}>
         <button className={this.props.css.btn}
                 disabled={!this.props.hasAllGuesses}
-                onClick={this.props.handleClick}>Guess</button> 
+                onClick={_ => this.props.handleClick(this.props.gameId, this.props.guess)}>Guess</button> 
       </div>
     )
   }

@@ -1,3 +1,4 @@
+const bodyParser = require('koa-bodyparser')
 const fs = require('fs')
 const logger = require('koa-logger')
 const koa = require('koa')
@@ -12,6 +13,7 @@ const port = process.env.PORT || 3000
 
 app.use(logger())
 app.use(mount('/static', static))
+app.use(bodyParser())
 app.use(mount('/api/mastermind', mastermind))
 app.use(route.get('/', index))
 
