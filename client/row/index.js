@@ -2,6 +2,7 @@ import React from 'react'
 import styleable from 'react-styleable'
 
 import css from './index.css'
+import { initialState as gameInitialState } from '../game/reducer'
 import Hole from '../hole'
 
 const { arrayOf, string } = React.PropTypes
@@ -29,7 +30,7 @@ Row.propTypes = {
 }
 
 Row.defaultProps = {
-  guess: [null, null, null, null]
+  guess: gameInitialState.guess 
 }
 
 export default styleable(css)(Row)

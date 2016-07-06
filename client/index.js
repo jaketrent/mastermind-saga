@@ -3,7 +3,10 @@ import React from 'react'
 import { render } from 'react-dom'
 
 import Game from './game'
+import * as gameActions from './game/actions'
 import store from './store'
+
+store.dispatch(gameActions.create())
 
 render(
   <Provider store={store}>

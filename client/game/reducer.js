@@ -1,9 +1,10 @@
 import { TYPES as HOLE_TYPES  } from '../hole/actions'
 import { TYPES as GAME_TYPES  } from '../game/actions'
 
-const initialState = {
+export const initialState = {
   guess: [null, null, null, null],
-  guesses: []
+  guesses: [],
+  id: null
 }
 
 const colorOrder = ['red', 'yellow', 'blue', 'green']
@@ -28,15 +29,23 @@ function guess(state, action) {
   const guesses = state.guesses.concat([state.guess])
   return {
     ...state,
-    guess: initialState.guess,
+    guess: state.guess,
     guesses
+  }
+}
+
+function createGameSuccess(state, action) {
+  return {
+    ...state,
+    id: action.game.id
   }
 }
 
 export default function reduce(state = initialState, action = {}) {
   const handlers = {
     [HOLE_TYPES.PLACE_PEG]: placePeg,
-    [GAME_TYPES.GUESS]: guess
+    [GAME_TYPES.GUESS]: guess,
+    [GAME_TYPES.CREATE_SUCCESS]: createGameSuccess
   }
   return handlers[action.type]
     ? handlers[action.type](state, action)
