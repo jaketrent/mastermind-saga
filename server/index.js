@@ -1,4 +1,5 @@
 const bodyParser = require('koa-bodyparser')
+const debug = require('debug')('mm')
 const fs = require('fs')
 const logger = require('koa-logger')
 const koa = require('koa')
@@ -22,4 +23,4 @@ function* index() {
 }
 
 app.listen(port)
-console.log(`Listening on port ${port}...`)
+debug(`Listening on port ${port}...`)

@@ -6,6 +6,6 @@ const config = require('./webpack.config.babel')
 
 const app = koa()
 
-app.use(webpackDevMiddleware(webpack(config)))
+app.use(webpackDevMiddleware(webpack(config), { noInfo: true, stats: { colors: true } }))
 
 module.exports = app

@@ -1,3 +1,4 @@
+const debug = require('debug')('mm')
 const koa = require('koa')
 const route = require('koa-route')
 const uuid = require('node-uuid')
@@ -56,12 +57,15 @@ function calcKeyPegs(guess, solution) {
 
 function* create() {
   const id = uuid.v4()
-  games[id] = generateGame(id)
+  const game = generateGame(id)
+  debug('game', game)
+  games[id] = game 
   this.body = { data: [{ id }] }
 }
 
 function* guess(id) {
   const keys = calcKeyPegs(this.request.body.data.guess, lookup(id).solution)
+  debug('keys', keys)
   this.body = { data: [{ keys }] }
 }
 

@@ -24,3 +24,11 @@
   composes: root;
   background-color: green;
 }
+.black {
+  composes: root;
+  background-color: black;
+}
+.white {
+  composes: root;
+  background-color: white;
+}

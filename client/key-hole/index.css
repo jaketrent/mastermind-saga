@@ -1,0 +1,7 @@
+.root {
+  border-radius: 50%;
+  border: 1px solid grey;
+  height: 5px;
+  width: 5px;
+  margin: 2px;
+}

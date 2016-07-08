@@ -9,13 +9,14 @@ import css from './board.css'
 
 function mapStateToProps(state) {
   return {
-    guesses: state.game.guesses
+    guesses: state.game.guesses,
+    feedbacks: state.game.feedbacks
   }
 }
 
 function renderRows(props) {
   return props.guesses.map((guess, i) => {
-    return <Row guess={guess} key={i} />
+    return <Row guess={guess} keys={props.feedbacks[i].keys} key={i} />
   })
 }
 
