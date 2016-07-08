@@ -4,7 +4,9 @@
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "start": "cross-env DEBUG=mm nodemon server"
+    "start": "cross-env DEBUG=mm nodemon server",
+    "test": "ava",
+    "test:watch": "npm run test -- --watch"
   },
   "engines": {
     "node": "6.x",
@@ -44,6 +46,16 @@
     "webpack": "^1.13.0"
   },
   "devDependencies": {
+    "ava": "^0.15.2",
     "nodemon": "^1.9.2"
+  },
+  "ava": {
+    "babel": "inherit",
+    "files": [
+      "server/**/*.spec.js"
+    ],
+    "require": [
+      "babel-register"
+    ]
   }
 }

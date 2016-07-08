@@ -1,3 +1,5 @@
+const debug = require('debug')('mm')
+
 const games = {}
 
 function lookup(id) {
@@ -6,6 +8,7 @@ function lookup(id) {
 
 function save(game) {
   games[game.id] = game
+  debug('store', games)
   return game
 }
 

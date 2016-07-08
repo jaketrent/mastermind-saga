@@ -1,0 +1,19 @@
+.root {
+  position: fixed;
+  top: 0;
+  right: 30px;
+  width: 300px;
+}
+.error {
+  display: block;
+  margin-bottom: 10px;
+  background: red;
+  height: 40px;
+  padding: 0 15px;
+  color: #fff;
+  line-height: 40px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 3px;
+}

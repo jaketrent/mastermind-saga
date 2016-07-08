@@ -2,6 +2,7 @@ const debug = require('debug')('mm')
 const koa = require('koa')
 const route = require('koa-route')
 
+const error = require('../../common/error')
 const rules = require('./rules')
 const store = require('./store')
 
@@ -15,9 +16,21 @@ function* create() {
 }
 
 function* guess(id) {
-  const keys = rules.calcKeyPegs(this.request.body.data.guess, store.lookup(id).solution)
-  debug('keys', keys)
-  this.body = { data: [{ keys }] }
+  const game = store.lookup(id)
+
+  if (rules.hasTurnsLeft(game)) {
+    const guess = this.request.body.data.guess
+    const keys = rules.calcKeyPegs(guess, game.solution)
+    debug('keys', keys)
+
+    game.guesses = game.guesses.concat([guess])
+    store.save(game)
+
+    this.body = { data: [{ keys }] }
+  } else {
+    this.status = 400
+    this.body = { errors: [error.create('No more turns available')] }
+  }
 }
 
 app.use(route.post('/', create))

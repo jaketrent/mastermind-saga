@@ -1,7 +1,7 @@
 .root {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
 }
 .btn {
   width: 150px;
@@ -10,7 +10,6 @@
   border: 0;
   background: gray;
   color: #fff;
-  font-family: sans-serif;
 }
 .btn:disabled {
   background: #efefef;
