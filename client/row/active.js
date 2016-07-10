@@ -3,7 +3,7 @@ import React from 'react'
 import styleable from 'react-styleable'
 
 import css from './index.css'
-import * as guessActions from '../guesser/actions'
+import * as guessActions from '../guess/actions'
 import Hole from '../hole'
 import Peg from '../peg'
 

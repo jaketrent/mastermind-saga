@@ -1,5 +1,5 @@
 import { TYPES } from '../game/actions'
-import { TYPES as GUESS_TYPES  } from '../guesser/actions'
+import { TYPES as GUESS_TYPES  } from '../guess/actions'
 
 export const initialState = {
   feedbacks: [],

@@ -5,7 +5,7 @@ import styleable from 'react-styleable'
 import Board from '../board'
 import Alerts from '../alerts'
 import css from './index.css'
-import Guesser from '../guesser'
+import Guess from '../guess'
 
 function mapStateToProps(state) {
   return {
@@ -18,7 +18,7 @@ function renderGame(props) {
     <div className={props.css.root}>
       <Alerts />
       <Board />
-      <Guesser />
+      <Guess />
     </div>
   )
 }

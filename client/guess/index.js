@@ -22,7 +22,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-class Guesser extends React.Component {
+class Guess extends React.Component {
   render() {
     return (
       <div className={this.props.css.root}>
@@ -34,4 +34,4 @@ class Guesser extends React.Component {
   }
 }
 
-export default styleable(css)(connect(mapStateToProps, mapDispatchToProps)(Guesser))
+export default styleable(css)(connect(mapStateToProps, mapDispatchToProps)(Guess))
