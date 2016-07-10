@@ -11,7 +11,6 @@ export function* create() {
   } catch (res) {
     if (res instanceof Error) throw res
 
-    console.log('error', res)
     yield put(actions.createError(deserializeError(res)))
   }
 }

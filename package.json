@@ -52,10 +52,12 @@
   "ava": {
     "babel": "inherit",
     "files": [
+      "client/**/*.spec.js",
       "server/**/*.spec.js"
     ],
     "require": [
-      "babel-register"
+      "babel-register",
+      "babel-polyfill"
     ]
   }
 }

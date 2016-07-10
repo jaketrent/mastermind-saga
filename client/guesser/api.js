@@ -4,7 +4,6 @@ import { deserializeError } from '../common/api'
 
 export const create = {
   formatUrl(id) {
-    console.log('client id', id)
     return `/api/mastermind/${id}/guess`
   },
   serialize(guess) {
