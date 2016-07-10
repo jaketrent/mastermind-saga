@@ -9,8 +9,8 @@ import * as guessActions from './actions'
 function mapStateToProps(state) {
   return {
     gameId: state.game.id,
-    guess: state.game.guess,
-    hasAllGuesses: state.game.guess.filter(g => g).length === CODE_PEG_COUNT
+    guess: state.guess.guess,
+    hasAllGuesses: state.guess.guess.filter(g => g).length === CODE_PEG_COUNT
   }
 }
 

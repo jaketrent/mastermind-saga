@@ -3,21 +3,21 @@ import React from 'react'
 import styleable from 'react-styleable'
 
 import css from './index.css'
-import * as holeActions from '../hole/actions'
+import * as guessActions from '../guesser/actions'
 import Hole from '../hole'
 import Peg from '../peg'
 
 function mapDispatchToProps(dispatch) {
   return {
     holeOnClick(i) {
-      dispatch(holeActions.placePeg(i))
+      dispatch(guessActions.placePeg(i))
     }
   }
 }
 
 function mapStateToProps(state) {
   return {
-    guess: state.game.guess
+    guess: state.guess.guess
   }
 }
 

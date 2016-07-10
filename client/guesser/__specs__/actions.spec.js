@@ -13,9 +13,11 @@ test('#create returns payload', t => {
 })
 
 test('#createSuccess returns payload', t => {
+  const guess = { some: 'guess' }
   const feedback = { some: 'feedback' }
-  t.deepEqual(subject.createSuccess(feedback), {
+  t.deepEqual(subject.createSuccess(guess, feedback), {
     type: subject.TYPES.CREATE_SUCCESS,
+    guess,
     feedback
   })
 })

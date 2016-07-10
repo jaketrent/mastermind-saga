@@ -8,7 +8,7 @@ export function* create({ id, guess }) {
   const { deserializeError, deserializeSuccess, formatUrl, request, serialize } = api.create
   try {
     const res = yield call(request, formatUrl(id), serialize(guess))
-    yield put(actions.createSuccess(deserializeSuccess(res)))
+    yield put(actions.createSuccess(guess, deserializeSuccess(res)))
   } catch (res) {
     if (res instanceof Error) throw res
 

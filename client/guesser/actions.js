@@ -3,7 +3,8 @@ import types from 'redux-types'
 export const TYPES = types('guess',
   'CREATE',
   'CREATE_SUCCESS',
-  'CREATE_ERROR'
+  'CREATE_ERROR',
+  'PLACE_PEG'
 )
 
 export function create(id, guess) {
@@ -14,9 +15,10 @@ export function create(id, guess) {
   }
 }
 
-export function createSuccess(feedback) {
+export function createSuccess(guess, feedback) {
   return {
     type: TYPES.CREATE_SUCCESS,
+    guess,
     feedback
   }
 }
@@ -28,3 +30,9 @@ export function createError(errors) {
   }
 }
 
+export function placePeg(index) {
+  return {
+    type: TYPES.PLACE_PEG,
+    index
+  }
+}

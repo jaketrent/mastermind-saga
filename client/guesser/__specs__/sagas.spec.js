@@ -16,7 +16,7 @@ test('#create handles request success', t => {
   const iterator = subject.create({ id, guess })
 
   t.deepEqual(iterator.next().value, call(request, formatUrl(id), serialize(guess)))
-  t.deepEqual(iterator.next(res).value, put(actions.createSuccess(deserializeSuccess(res))))
+  t.deepEqual(iterator.next(res).value, put(actions.createSuccess(guess, deserializeSuccess(res))))
 })
 
 test('#create handles request error', t => {
