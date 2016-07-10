@@ -3,7 +3,7 @@ const uuid = require('node-uuid')
 const mathUtils = require('../../common/utils/math')
 
 const colorOrder = ['red', 'yellow', 'blue', 'green']
-const turnCount = 2
+const turnCount = 8
 const CODE_PEG_COUNT = 4
 
 function generateSolution() {

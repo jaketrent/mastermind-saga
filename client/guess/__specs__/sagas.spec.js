@@ -19,6 +19,18 @@ test('#create handles request success', t => {
   t.deepEqual(iterator.next(res).value, put(actions.createSuccess(guess, deserializeSuccess(res))))
 })
 
+test('#create alerts on last success', t => {
+  const res = { status: 201, data: { data: [{ solution: ['some', 'solution'] }] } }
+
+  const iterator = subject.create({ id, guess })
+
+  t.deepEqual(iterator.next().value, call(request, formatUrl(id), serialize(guess)))
+  t.deepEqual(iterator.next(res).value, put(actions.createSuccess(guess, deserializeSuccess(res))))
+  const actual = iterator.next(res).value.PUT.action
+  t.truthy(actual.type === alertsActions.TYPES.APPEND_ALERTS)
+  t.truthy(actual.alerts[0].title === 'Game over')
+})
+
 test('#create handles request error', t => {
   const res = { status: 400, data: { errors: [{ some: 'response' }] } }
 
