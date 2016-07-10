@@ -20,7 +20,7 @@ function* guess(id) {
 
   if (rules.hasTurnsLeft(game)) {
     const guess = this.request.body.data.guess
-    const keys = rules.calcKeyPegs(guess, game.solution)
+    const keys = rules.calcKeys(guess, game.solution)
     debug('keys', keys)
 
     game.guesses = game.guesses.concat([guess])

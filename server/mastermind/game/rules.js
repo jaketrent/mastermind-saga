@@ -17,7 +17,7 @@ function generateGame(id) {
   }
 }
 
-function calcKeyPegs(guess, solution) {
+function calcKeys(guess, solution) {
   const blackIndexes = guess.reduce((indexes, g, i) => {
     const isBlack = g === solution[i]
     return indexes = isBlack
@@ -26,12 +26,14 @@ function calcKeyPegs(guess, solution) {
   }, [])
 
   const whiteIndexes = guess.reduce((indexes, g, i) => {
-    const indexInSolution = solution.indexOf(g)
-    const isWhite = indexInSolution > -1
-            && !blackIndexes.includes(indexInSolution)
-            && !indexes.includes(indexInSolution)
-    return indexes = isWhite
-      ? indexes.concat([i])
+    const uniqueNewMatches = solution
+      .map((color, i) => color === g ? i : -1)
+      .filter(i => i > -1)
+      .filter(i => !blackIndexes.includes(i))
+      .filter(i => !indexes.includes(i))
+
+    return indexes = uniqueNewMatches.length > 0
+      ? indexes.concat(uniqueNewMatches)
       : indexes
   }, [])
 
@@ -46,5 +48,5 @@ function hasTurnsLeft(game) {
 }
 
 exports.generateGame = generateGame
-exports.calcKeyPegs = calcKeyPegs
+exports.calcKeys = calcKeys
 exports.hasTurnsLeft = hasTurnsLeft
