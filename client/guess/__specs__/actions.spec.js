@@ -18,8 +18,16 @@ test('#createSuccess returns payload', t => {
   t.deepEqual(subject.createSuccess(guess, feedback), {
     type: subject.TYPES.CREATE_SUCCESS,
     guess,
-    feedback
+    feedback,
+    alerts: []
   })
+})
+
+test('#createSuccess includes alerts if solution given', t => {
+  const guess = { some: 'guess' }
+  const feedback = { solution: 'something' }
+  const actual = subject.createSuccess(guess, feedback)
+  t.truthy(Array.isArray(actual.alerts))
 })
 
 test('#createError returns payload', t => {

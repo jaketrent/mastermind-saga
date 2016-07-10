@@ -14,3 +14,10 @@ test('TYPES.DISMISS_ALERT removes a specific alert', t => {
   const action = { type: TYPES.DISMISS_ALERT, id: 2 }
   t.deepEqual(subject(state, action).alerts, [{ id: 1 }, { id: 3 }])
 })
+
+test('appends any alerts for any actions', t => {
+  const state = { alerts: [1] }
+  const alert = { id: 'someId', title: 'someTitle' } 
+  const action = { type: 'someType', alerts: [alert] }
+  t.deepEqual(subject(state, action).alerts, [1, alert])
+})

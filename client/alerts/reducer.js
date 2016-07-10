@@ -22,8 +22,10 @@ function dismissAlert(state, action) {
 }
 
 export default function reduce(state = initialState, action = {}) {
+  if (Array.isArray(action.alerts) && action.alerts.length > 0)
+    return appendAlerts(state, action)
+
   const handlers = {
-    [TYPES.APPEND_ALERTS]: appendAlerts,
     [TYPES.DISMISS_ALERT]: dismissAlert
   }
   return handlers[action.type]
