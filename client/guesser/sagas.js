@@ -1,6 +1,7 @@
 import { call, put } from 'redux-saga/effects'
 
 import * as actions from './actions'
+import * as alertsActions from '../alerts/actions'
 import * as api from './api'
 
 export function* create({ id, guess }) {
@@ -11,6 +12,6 @@ export function* create({ id, guess }) {
   } catch (res) {
     if (res instanceof Error) throw res
 
-    yield put(actions.createError(deserializeError(res)))
+    yield put(alertsActions.alert(deserializeError(res)))
   }
 }

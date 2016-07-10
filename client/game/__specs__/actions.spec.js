@@ -24,10 +24,3 @@ test('#createError returns payload', t => {
   })
 })
 
-test('#dismissError returns payload', t => {
-  const id = 'someId'
-  t.deepEqual(subject.dismissError(id), {
-    type: subject.TYPES.DISMISS_ERROR,
-    id
-  })
-})
