@@ -1,7 +1,9 @@
+import * as arrayUtil from '../common/array'
+import { TYPES as GAME_TYPES } from '../game/actions'
 import { TYPES } from './actions'
 
 export const initialState = {
-  guess: [null, null, null, null]
+  guess: []
 }
 
 const colorOrder = ['red', 'yellow', 'blue', 'green']
@@ -29,9 +31,17 @@ function createSuccess(state, action) {
   }
 }
 
+function gameCreateSuccess(state, action) {
+  return {
+    ...state,
+    guess: arrayUtil.range(action.game.codePegCount).map(i => null),
+    codePegCount: action.game.codePegCount
+  }
+}
 
 export default function reduce(state = initialState, action = {}) {
   const handlers = {
+    [GAME_TYPES.CREATE_SUCCESS]: gameCreateSuccess,
     [TYPES.PLACE_PEG]: placePeg,
     [TYPES.CREATE_SUCCESS]: createSuccess
   }

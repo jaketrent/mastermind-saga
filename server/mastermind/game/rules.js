@@ -3,7 +3,8 @@ const uuid = require('node-uuid')
 const mathUtils = require('../../common/utils/math')
 
 const colorOrder = ['red', 'yellow', 'blue', 'green']
-const numTurns = 2
+const turnCount = 2
+const CODE_PEG_COUNT = 4
 
 function generateSolution() {
   return [1, 2, 3, 4].map(_ => colorOrder[mathUtils.randomInt(colorOrder.length)])
@@ -11,6 +12,7 @@ function generateSolution() {
 
 function generateGame(id) {
   return {
+    codePegCount: CODE_PEG_COUNT,
     id: uuid.v4() || id,
     guesses: [],
     solution: generateSolution()
@@ -44,9 +46,9 @@ function calcKeys(guess, solution) {
 }
 
 function hasTurnsLeft(game) {
-  return game.guesses.length < numTurns
+  return game.guesses.length < turnCount
 }
 
-exports.generateGame = generateGame
 exports.calcKeys = calcKeys
+exports.generateGame = generateGame
 exports.hasTurnsLeft = hasTurnsLeft

@@ -2,7 +2,6 @@ import { connect } from 'react-redux'
 import React from 'react'
 import styleable from 'react-styleable'
 
-import { CODE_PEG_COUNT } from '../game/vars'
 import css from './index.css'
 import * as guessActions from './actions'
 
@@ -10,7 +9,7 @@ function mapStateToProps(state) {
   return {
     gameId: state.game.id,
     guess: state.guess.guess,
-    hasAllGuesses: state.guess.guess.filter(g => g).length === CODE_PEG_COUNT
+    hasAllGuesses: state.guess.guess.filter(g => g).length === state.guess.codePegCount
   }
 }
 
