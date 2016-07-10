@@ -2,7 +2,6 @@ import { call, put } from 'redux-saga/effects'
 import test from 'ava'
 
 import * as actions from '../actions'
-import * as alertsActions from '../../alerts/actions'
 import * as api from '../api'
 import * as subject from '../sagas'
 
@@ -25,7 +24,7 @@ test('#create handles request error', t => {
   const iterator = subject.create({ id, guess })
 
   t.deepEqual(iterator.next().value, call(request, formatUrl(id), serialize(guess)))
-  t.deepEqual(iterator.throw(res).value, put(alertsActions.alert(deserializeError(res))))
+  t.deepEqual(iterator.throw(res).value, put(actions.createError(deserializeError(res))))
 })
 
 test('#create handles thrown error', t => {

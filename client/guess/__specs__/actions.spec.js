@@ -34,6 +34,6 @@ test('#createError returns payload', t => {
   const errors = [{ some: 'errors' }]
   t.deepEqual(subject.createError(errors), {
     type: subject.TYPES.CREATE_ERROR,
-    errors
+    alerts: errors
   })
 })

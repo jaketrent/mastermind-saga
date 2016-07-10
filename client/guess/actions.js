@@ -29,7 +29,7 @@ export function createSuccess(guess, feedback) {
 export function createError(errors) {
   return {
     type: TYPES.CREATE_ERROR,
-    errors
+    alerts: errors
   }
 }
 
