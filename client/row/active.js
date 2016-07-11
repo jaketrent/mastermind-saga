@@ -34,7 +34,7 @@ function renderHoles(props) {
 class ActiveRow extends React.Component {
   render() {
     return (
-      <div className={this.props.css.root}>
+      <div className={this.props.css.rootActive}>
         {renderHoles(this.props)}
         <div className={this.props.css.keys}></div>
       </div>

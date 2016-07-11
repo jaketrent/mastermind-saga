@@ -3,7 +3,7 @@ import React from 'react'
 import styleable from 'react-styleable'
 
 import css from './index.css'
-import * as alertsActions from '../alerts/actions'
+import * as actions from './actions'
 
 function mapStateToProps(state) {
   return {
@@ -13,22 +13,22 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    dismissAlert(errId) { dispatch(alertsActions.dismissAlert(errId)) }
+    dismissAlert(errId) { dispatch(actions.dismissAlert(errId)) }
   }
 }
 
-function renderAlert(props, err) {
+function renderAlert(props, alert) {
   return (
-    <li className={props.css.alert}
-        key={err.id}
-        onClick={_ => props.dismissAlert(err.id)}>
-      {err.title}
+    <li className={props.css[alert.level]}
+        key={alert.id}
+        onClick={_ => props.dismissAlert(alert.id)}>
+      {alert.title}
     </li>
   )
 }
 
 function renderAlerts(props) {
-  return props.alerts.map(err => renderAlert(props, err))
+  return props.alerts.map(alert => renderAlert(props, alert))
 }
 
 function Alerts(props) {

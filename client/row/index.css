@@ -9,8 +9,10 @@
   background: #A4A9D0;
   margin-bottom: 5px;
 }
-.root:nth-child(2n) {
+.rootActive {
+  composes: root;
   background: #9EA7E7;
+  border: 3px solid white;
 }
 .keys {
   position: absolute;

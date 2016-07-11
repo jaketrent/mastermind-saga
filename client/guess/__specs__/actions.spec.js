@@ -38,9 +38,13 @@ test('#createSuccess includes game over alert if solution doesnt match', t => {
 })
 
 test('#createError returns payload', t => {
-  const errors = [{ some: 'errors' }]
-  t.deepEqual(subject.createError(errors), {
+  const errs = [{ status: 500, id: 'anId', title: 'errors' }]
+  t.deepEqual(subject.createError(errs), {
     type: subject.TYPES.CREATE_ERROR,
-    alerts: errors
+    alerts: [{
+      id: errs[0].id,
+      title: errs[0].title,
+      level: 'ERROR'
+    }]
   })
 })

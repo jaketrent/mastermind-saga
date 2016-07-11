@@ -24,11 +24,10 @@ export function createSuccess(guess, feedback) {
     guess,
     feedback,
     alerts: feedback.solution 
-      ? [feedback.solution && alertsUtils.create(
-          arrayUtils.shallowEqual(guess, feedback.solution)
-            ? 'You won!'
-            : 'Game over :('
-        )]
+      ? [arrayUtils.shallowEqual(guess, feedback.solution)
+          ? alertsUtils.createSuccess('You won!')
+          : alertsUtils.createError('Game over :(')
+        ]
       : []
   }
 }
@@ -36,7 +35,7 @@ export function createSuccess(guess, feedback) {
 export function createError(errors) {
   return {
     type: TYPES.CREATE_ERROR,
-    alerts: errors
+    alerts: alertsUtils.createFromErrors(errors)
   }
 }
 

@@ -19,7 +19,7 @@ test('#create handles request success', t => {
 })
 
 test('#create handles request error', t => {
-  const res = { status: 400, data: { errors: [{ some: 'response' }] } }
+  const res = { status: 400, data: { errors: [{ id: 'anId', title: 'response' }] } }
 
   const iterator = subject.create({ id, guess })
 
