@@ -27,7 +27,7 @@ function* guess(id) {
     const keys = rules.calcKeys(guess, game.solution)
     const payload = { keys }
 
-    if (!rules.hasTurnsLeft(game) || keys.blacks.length === game.codePegCount)
+    if (!rules.hasTurnsLeft(game) || keys.blacks === game.codePegCount)
       payload.solution = game.solution
 
     debug('payload', payload)

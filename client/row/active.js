@@ -4,8 +4,8 @@ import styleable from 'react-styleable'
 
 import css from './index.css'
 import * as guessActions from '../guess/actions'
-import Hole from '../hole'
-import Peg from '../peg'
+import Hole from './hole'
+import Peg from './peg'
 
 function mapDispatchToProps(dispatch) {
   return {

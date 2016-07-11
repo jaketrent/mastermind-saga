@@ -2,10 +2,11 @@ import { connect } from 'react-redux'
 import React from 'react'
 import styleable from 'react-styleable'
 
-import ActiveRow from './row/active'
-import Row from './row'
+import ActiveRow from '../row/active'
+import Guess from '../guess'
+import Row from '../row'
 
-import css from './board.css'
+import css from './index.css'
 
 function mapStateToProps(state) {
   return {
@@ -26,6 +27,7 @@ class Board extends React.Component {
       <div className={this.props.css.root}>
         {renderRows(this.props)}
         <ActiveRow />
+        <Guess />
       </div>
     )
   }

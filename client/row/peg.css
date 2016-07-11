@@ -1,0 +1,38 @@
+.root {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  background-color: grey;
+}
+.gray {
+  composes: root;
+  background-color: grey;
+}
+.red {
+  composes: root;
+  background: red;
+  background: radial-gradient(ellipse at center, rgba(245,128,108,1) 0%, rgba(231,56,39,1) 100%);
+}
+.yellow {
+  composes: root;
+  background: yellow;
+  background: radial-gradient(ellipse at center, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
+}
+.blue {
+  composes: root;
+  background: blue;
+  background: radial-gradient(ellipse at center, rgba(147,206,222,1) 0%, rgba(73,165,191,1) 100%);
+}
+.green {
+  composes: root;
+  background: green;
+  background: radial-gradient(ellipse at center, rgba(210,255,82,1) 0%, rgba(109,219,7,1) 100%);
+}
+.black {
+  composes: root;
+  background-color: black;
+}
+.white {
+  composes: root;
+  background-color: white;
+}

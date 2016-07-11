@@ -4,7 +4,7 @@ import { render } from 'react-dom'
 
 import Game from './game'
 import * as gameActions from './game/actions'
-import store from './store'
+import store from './common/store'
 
 store.dispatch(gameActions.create())
 

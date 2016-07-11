@@ -1,8 +1,8 @@
 import React from 'react'
 import styleable from 'react-styleable'
 
-import css from './index.css'
-import Peg from '../peg'
+import css from './key-hole.css'
+import Peg from './peg'
 
 const { func, string } = React.PropTypes
 

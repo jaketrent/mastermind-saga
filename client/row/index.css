@@ -1,13 +1,21 @@
 .root {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1;
-  border: 1px solid #ababab;
   padding: 5px 10px;
-  min-height: 40px;
+  min-height: 50px;
+  background: #A4A9D0;
+  margin-bottom: 5px;
+}
+.root:nth-child(2n) {
+  background: #9EA7E7;
 }
 .keys {
-  width: 35px;
+  position: absolute;
+  top: 21px;
+  right: 12px;
+  width: 39px;
   display: flex;
 }

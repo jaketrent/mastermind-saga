@@ -23,11 +23,18 @@ test('#createSuccess returns payload', t => {
   })
 })
 
-test('#createSuccess includes alerts if solution given', t => {
+test('#createSuccess includes game over alert if solution doesnt match', t => {
   const guess = { some: 'guess' }
   const feedback = { solution: 'something' }
   const actual = subject.createSuccess(guess, feedback)
-  t.truthy(Array.isArray(actual.alerts))
+  t.truthy(actual.alerts[0].title === 'Game over :(')
+})
+
+test('#createSuccess includes game over alert if solution doesnt match', t => {
+  const guess = ['the', 'solution', 'guess']
+  const feedback = { solution: guess }
+  const actual = subject.createSuccess(guess, feedback)
+  t.truthy(actual.alerts[0].title === 'You won!')
 })
 
 test('#createError returns payload', t => {

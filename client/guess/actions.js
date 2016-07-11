@@ -1,6 +1,7 @@
 import types from 'redux-types'
 
 import * as alertsUtils from '../alerts/utils'
+import * as arrayUtils from '../common/array'
 
 export const TYPES = types('guess',
   'CREATE',
@@ -22,7 +23,13 @@ export function createSuccess(guess, feedback) {
     type: TYPES.CREATE_SUCCESS,
     guess,
     feedback,
-    alerts: feedback.solution ? [alertsUtils.create('Game over')]: []
+    alerts: feedback.solution 
+      ? [feedback.solution && alertsUtils.create(
+          arrayUtils.shallowEqual(guess, feedback.solution)
+            ? 'You won!'
+            : 'Game over :('
+        )]
+      : []
   }
 }
 

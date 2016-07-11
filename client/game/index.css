@@ -6,11 +6,20 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: #6B708F;
+  color: #fff;
 }
 .root {
-  background: #efefef;
-  max-width: 400px;
-  width: 100vw;
+  padding: 20px 0;
+  max-width: 100%;
+  width: 300px;
   height: 100vh;
   margin: 0 auto;
+}
+.title {
+  margin: 17 auto;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }

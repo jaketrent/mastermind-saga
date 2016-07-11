@@ -3,8 +3,8 @@ import styleable from 'react-styleable'
 
 import * as arrayUtil from '../common/array'
 import css from './index.css'
-import Hole from '../hole'
-import KeyHole from '../key-hole'
+import Hole from './hole'
+import KeyHole from './key-hole'
 
 const { arrayOf, number, shape, string } = React.PropTypes
 
