@@ -18,6 +18,7 @@ function renderGame(props) {
       <Alerts />
       <h1 className={props.css.title}>Mastermind</h1>
       <Board />
+      <a className={props.css.cite} target="_blank" href="https://github.com/jaketrent/mastermind-saga">src on github</a>
     </div>
   )
 }
