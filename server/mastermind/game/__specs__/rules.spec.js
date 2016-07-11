@@ -31,3 +31,9 @@ test('#calcKeys handles blacks and repeat color whites', t => {
   const guess = ['red', 'blue', 'yellow', 'red']
   t.deepEqual(subject.calcKeys(guess, solution), { whites: 2, blacks: 1 })
 })
+
+test('#calcKeys counts whites to max in guess if more in solution', t => {
+  const solution = ['yellow', 'yellow', 'red', 'red']
+  const guess = ['blue', 'blue', 'blue', 'yellow']
+  t.deepEqual(subject.calcKeys(guess, solution), { whites: 1, blacks: 0 })
+})

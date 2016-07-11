@@ -28,14 +28,15 @@ function calcKeys(guess, solution) {
   }, [])
 
   const whiteIndexes = guess.reduce((indexes, g, i) => {
-    const uniqueNewMatches = solution
+    const oneUniqueNewMatch = solution
       .map((color, i) => color === g ? i : -1)
       .filter(i => i > -1)
       .filter(i => !blackIndexes.includes(i))
       .filter(i => !indexes.includes(i))
+      .splice(0, 1)
 
-    return indexes = uniqueNewMatches.length > 0
-      ? indexes.concat(uniqueNewMatches)
+    return indexes = oneUniqueNewMatch.length > 0
+      ? indexes.concat(oneUniqueNewMatch)
       : indexes
   }, [])
 
