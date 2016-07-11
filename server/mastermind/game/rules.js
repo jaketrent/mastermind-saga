@@ -19,16 +19,9 @@ function generateGame(id) {
   }
 }
 
-function calcKeys(guess, solution) {
-  const blackIndexes = guess.reduce((indexes, g, i) => {
-    const isBlack = g === solution[i]
-    return indexes = isBlack
-      ? indexes.concat([i])
-      : indexes
-  }, [])
-
-  const whiteIndexes = guess.reduce((indexes, g, i) => {
-    const oneUniqueNewMatch = solution
+function findWhiteIndexes(src, compare, blackIndexes) {
+  return src.reduce((indexes, g, i) => {
+    const oneUniqueNewMatch = compare
       .map((color, i) => color === g ? i : -1)
       .filter(i => i > -1)
       .filter(i => !blackIndexes.includes(i))
@@ -39,10 +32,23 @@ function calcKeys(guess, solution) {
       ? indexes.concat(oneUniqueNewMatch)
       : indexes
   }, [])
+}
+
+function calcKeys(guess, solution) {
+  const blackIndexes = guess.reduce((indexes, g, i) => {
+    const isBlack = g === solution[i]
+    return indexes = isBlack
+      ? indexes.concat([i])
+      : indexes
+  }, [])
+
+  const whiteIndexesInSolution = findWhiteIndexes(solution, guess, blackIndexes)
+  const whiteIndexesInGuess = findWhiteIndexes(guess, solution, blackIndexes)
+  const whiteIndexesSingleUseCount = Math.min(whiteIndexesInSolution.length, whiteIndexesInGuess.length)
 
   return {
     blacks: blackIndexes.length,
-    whites: whiteIndexes.length
+    whites: whiteIndexesSingleUseCount
   }
 }
 
