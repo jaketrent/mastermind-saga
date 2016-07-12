@@ -33,5 +33,5 @@ test('#create handles thrown error', t => {
   const iterator = subject.create({ id, guess })
 
   t.deepEqual(iterator.next().value, call(request, formatUrl(id), serialize(guess)))
-  t.throws(_ => iterator.next())
+  t.throws(_ => iterator.throw(err))
 })
