@@ -6,15 +6,9 @@ import * as gameSagas from '../../game/sagas'
 import * as guessActions from '../../guess/actions'
 import * as guessSagas from '../../guess/sagas'
 
-function watchEvery(actionType, saga) {
-  return fork(function* () {
-    yield* takeEvery(actionType, saga)
-  })
-}
-
 export default function* root() {
-  yield [
-    watchEvery(gameActions.TYPES.CREATE, gameSagas.create),
-    watchEvery(guessActions.TYPES.CREATE, guessSagas.create)
+  yield* [
+    fork(takeEvery, gameActions.TYPES.CREATE, gameSagas.create),
+    fork(takeEvery, guessActions.TYPES.CREATE, guessSagas.create)
   ]
 }
