@@ -2,6 +2,8 @@
 
 A game of mastermind showing use of redux-saga
 
+![mastermind game](http://i.imgur.com/qla1cyc.png)
+
 #### Install
 
 ```
