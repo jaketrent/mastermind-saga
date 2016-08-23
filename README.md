@@ -17,6 +17,6 @@ npm start
 open localhost:3000
 ```
 
-#### To support this talk
+#### Written to support this talk
 
-<script async class="speakerdeck-embed" data-id="69d2b8dafbdc4d75beafa643148fcaa5" data-ratio="1.33159947984395" src="//speakerdeck.com/assets/embed.js"></script>
+[Handling Async Actions with Redux Saga](https://speakerdeck.com/jaketrent/handling-async-actions-with-redux-saga)
